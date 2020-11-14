@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             StreamBuilder(
                 stream: _counterBloc.counterStream,
-                initialData: 0,
+                // initialData: 0,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   return Text("${snapshot.data}");
                 }),

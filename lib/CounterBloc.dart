@@ -3,7 +3,7 @@ import 'dart:async';
 enum CounterAction { Increment, Decrement, Reset }
 
 class CounterBloc {
-  int counter;
+  int counter = 0;
   final _stateStreamController = StreamController<int>();
   StreamSink<int> get counterSink => _stateStreamController.sink;
   Stream<int> get counterStream => _stateStreamController.stream;
@@ -13,7 +13,7 @@ class CounterBloc {
   Stream<CounterAction> get eventStream => _eventStreamController.stream;
 
   CounterBloc() {
-    counter = 0;
+    counterSink.add(counter);
     eventStream.listen((event) {
       if (event == CounterAction.Increment) {
         counter++;
